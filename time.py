@@ -6,7 +6,7 @@ paragraph = []
 halfhour = timedelta(0, 1800)
 delta = timedelta(0)
 
-startdate = datetime(datetime.now().year, datetime.now().month, datetime.now().day, 11)
+startdate = datetime(datetime.now().year, datetime.now().month, datetime.now().day, 9)
 oneday = timedelta(1)
 
 dt = startdate
@@ -17,7 +17,7 @@ for line in sys.stdin:
         dt += halfhour
     else:
         dt += oneday
-        dt = dt.replace(hour=11, minute=0)
+        dt = dt.replace(hour=9, minute=0)
     
     if '\x01' in line:
         l1,l2 = line.split('\x01')
