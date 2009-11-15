@@ -1,11 +1,10 @@
-2009-11-15 11:30:00	== Metamorphosis Franz Kafka ==
-2009-11-15 12:00:00	== Translated by David Wyllie ==
-2009-11-15 12:30:00	== I ==
-2009-11-15 13:00:00	One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.
-2009-11-15 13:30:00	He lay on his armour-like back, and if he lifted his head a little he could see his brown belly,
-2009-11-15 14:00:00	slightly domed and divided by arches into stiff sections.
-2009-11-15 14:30:00	The bedding was hardly able to cover it and seemed ready to slide off any moment.
-2009-11-15 15:00:00	His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.
+2009-11-15 11:30:00	== Metamorphosis ==
+2009-11-15 12:00:00	== I ==
+2009-11-15 12:30:00	One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.
+2009-11-15 13:00:00	He lay on his armour-like back, and if he lifted his head a little he could see his brown belly,
+2009-11-15 13:30:00	slightly domed and divided by arches into stiff sections.
+2009-11-15 14:00:00	The bedding was hardly able to cover it and seemed ready to slide off any moment.
+2009-11-15 14:30:00	His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.
 2009-11-16 11:00:00	
 2009-11-16 11:30:00	"What's happened to me?" he thought.
 2009-11-16 12:00:00	It wasn't a dream.
