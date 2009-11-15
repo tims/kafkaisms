@@ -14,7 +14,7 @@ if status == None:
 
 api = twitter.Api(username=username, password=password)
 
-bla = api.GetUserTimeline('kafkaisms', count=1)
+bla = api.GetUserTimeline(username, count=1)
 if len(bla) > 0:
     livetweet = [long(bla[0].id), datetime.datetime.strptime(bla[0].created_at, "%a %b %d %H:%M:%S +0000 %Y"), bla[0].text]
 else:
