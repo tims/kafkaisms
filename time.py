@@ -6,7 +6,7 @@ paragraph = []
 halfhour = timedelta(0, 1800)
 delta = timedelta(0)
 
-startdate = datetime(datetime.now().year, datetime.now().month, datetime.now().day, 9)
+startdate = datetime(datetime.now().year, datetime.now().month, datetime.now().day + 1, 9)
 oneday = timedelta(1)
 
 dt = startdate

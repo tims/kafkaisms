@@ -2,10 +2,11 @@ import yaml
 import twitter
 import datetime
 import sys
+import mail
 
 config = yaml.load(open('config.yaml'))
-username = config['username']
-password = config['password']
+username = config['twitter_username']
+password = config['twitter_password']
 
 status = yaml.load(open('status.yaml'))
 if status == None:
@@ -25,14 +26,23 @@ lastid = lasttweet.get('id',0)
 lastdate = lasttweet.get('date', datetime.datetime.fromtimestamp(0))
 lasttext = lasttweet.get('text')
 
-print "livetweet:",liveid, livedate, livetext
-print "lasttweet:",lastid, lastdate, lasttext
+msg = ""
+msg += "livetweet: %s, %s, %s\n" % (livedate, liveid, livetext)
+msg += "lasttweet: %s, %s, %s\n" % (lastdate, lastid, lasttext)
+
+print msg
 
 if lastid > 0:
     if lastid != liveid:
-        raise Exception("live id and last id don't match!")
+        err = "liveid and lastid don't match :(\n"
+        print err
+        mail.mail("trsell@gmail.com","tweet failed", err + msg, None)
+        sys.exit(1)
     if lasttext != livetext:
-        raise Exception("live text and last text don't match!")
+        err = "liveitext and lasttext don't match :(\n"
+        print err
+        mail.mail("trsell@gmail.com","tweet failed", err + msg, None)
+        sys.exit(1)
 
 tweetsfile = open('metamorphosis_tweets.txt')
 for line in tweetsfile:
