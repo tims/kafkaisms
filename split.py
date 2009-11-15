@@ -1,7 +1,7 @@
-import re
-filename='metamorphosis.txt'
+import re, sys
+#filename='metamorphosis.txt'
 
-f = open(filename)
+f = sys.stdin
 
 tweetbuf = []
 
