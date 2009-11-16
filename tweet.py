@@ -72,6 +72,7 @@ id = long(poststatus.id)
 status['lasttweet'] = {'id':id, 'date':dt, 'text':text, 'kafkaid':kafkaid}
 yaml.dump(status, stream=open('status.yaml','w'))
 
+print "------------------------"
 
 
 
