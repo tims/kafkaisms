@@ -14,6 +14,7 @@ if status == None:
 
 api = twitter.Api(username=username, password=password)
 
+print
 print "Kafkaisms tweeter.", datetime.datetime.now()
 bla = api.GetUserTimeline(username, count=1)
 if len(bla) > 0:
