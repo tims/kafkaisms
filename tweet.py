@@ -14,7 +14,7 @@ if status == None:
 
 api = twitter.Api(username=username, password=password)
 
-print
+print "--------------------------\n"
 print "Kafkaisms tweeter.", datetime.datetime.now()
 bla = api.GetUserTimeline(username, count=1)
 if len(bla) > 0:
@@ -72,8 +72,5 @@ id = long(poststatus.id)
 status['lasttweet'] = {'id':id, 'date':dt, 'text':text, 'kafkaid':kafkaid}
 yaml.dump(status, stream=open('status.yaml','w'))
 
-print "------------------------"
-
-
-
+print
 
