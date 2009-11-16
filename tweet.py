@@ -24,13 +24,14 @@ else:
 liveid, livedate, livetext = livetweet
 
 lasttweet = status.get('lasttweet', {})
-lastid = lasttweet.get('id',0)
+lastid = lasttweet.get('id',0L)
 lastdate = lasttweet.get('date', datetime.datetime.fromtimestamp(0))
 lasttext = lasttweet.get('text')
+lastkafkaid = lasttweet.get('kafkaid',0L)
 
 msg = ""
-msg += "livetweet: %s, %s, %s\n" % (livedate, liveid, livetext)
-msg += "lasttweet: %s, %s, %s\n" % (lastdate, lastid, lasttext)
+msg += "livetweet: \t%s\t%s\t%s\n" % (livedate, liveid, livetext)
+msg += "lasttweet: %s\t%s\t%s\t%s\n" % (lastkafkaid, lastdate, lastid, lasttext)
 
 print msg
 
@@ -49,12 +50,13 @@ if lastid > 0:
 tweetsfile = open('metamorphosis_tweets.txt')
 for line in tweetsfile:
     parts = line.strip().split('\t')
-    dt = datetime.datetime.strptime(parts[0], '%Y-%m-%d %H:%M:%S')
-    if dt > lastdate and len(parts) > 1:
-        text = parts[1]
+    kafkaid = parts[0]
+    dt = datetime.datetime.strptime(parts[1], '%Y-%m-%d %H:%M:%S')
+    if kafkaid > lastkafkaid and len(parts) > 2:
+        text = parts[2]
         break
 
-print "nexttweet:",dt,text
+print "nexttweet:",kafkaid,dt,text
 
 if dt < datetime.datetime.now():
     print "past publish time, publishing"
@@ -67,7 +69,7 @@ poststatus = api.PostUpdate(text)
 print poststatus
 id = long(poststatus.id)
 
-status['lasttweet'] = {'id':id, 'date':dt, 'text':text}
+status['lasttweet'] = {'id':id, 'date':dt, 'text':text, 'kafkaid':kafkaid}
 yaml.dump(status, stream=open('status.yaml','w'))
 
 

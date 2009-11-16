@@ -10,9 +10,10 @@ startdate = datetime(datetime.now().year, datetime.now().month, datetime.now().d
 oneday = timedelta(1)
 
 dt = startdate
+i = 0
 for line in sys.stdin:
     line = line.strip()
-    
+    i+=1
     if line:
         dt += halfhour
     else:
@@ -21,10 +22,11 @@ for line in sys.stdin:
     
     if '\x01' in line:
         l1,l2 = line.split('\x01')
-        print "%s\t%s" % (dt, l1)
-        print "%s\t%s" % (dt, l2)
+        print "%s\t%s\t%s" % (i, dt, l1)
+        i+=1
+        print "%s\t%s\t%s" % (i, dt, l2)
     else:
-        print "%s\t%s" % (dt, line)
+        print "%s\t%s\t%s" % (i, dt, line)
 
 sys.exit()
 """ Print tweets with a timestamp """
