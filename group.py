@@ -8,7 +8,12 @@ class Tweet:
         self.set('')
     
     def say(self):
-        if self.tweet: print self.tweet
+        if len(self.tweet) > 140:
+            parts = self.tweet.split(' ')
+            print ' '.join(parts[:len(parts)/2])
+            print ' '.join(parts[len(parts)/2:])
+        elif self.tweet: 
+            print self.tweet
         self.set('')
     
     def set(self,tweet):
@@ -30,7 +35,7 @@ for line in sys.stdin:
     line = line.strip()
     
     # Forcibly end the current tweet on certain punctuation at the end of a line
-    if endpattern.search(tweet.get()):
+    if endpattern.search(tweet.get()) and len(tweet.get()) <= 140:
         tweet.say()
 
     # Proceed to processing the current line
@@ -54,20 +59,14 @@ for line in sys.stdin:
     lastblank = False
     # if the tweet will be too long with the current line, end the tweet and start a new one.
     current = tweet.get()
-    currlen = len(current)
-    if currlen + len(line) + 1 > 140:
-        if current:
-            if currlen > 140:
-                parts = current.split(' ')
-                tweet1 = ' '.join(parts[:len(parts)/2])
-                tweet2 = ' '.join(parts[len(parts)/2:])
-                tweet.set('\x01'.join([tweet1,tweet2]))
+    if len(current + line) + 1 > 140:
         tweet.say()
         tweet.set(line)
     else:
         if current:
             tweet.add(line)
         else:
+            # say a blank line
             tweet.say()
             tweet.set(line)
 
