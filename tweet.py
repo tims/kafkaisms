@@ -27,7 +27,7 @@ lasttweet = status.get('lasttweet', {})
 lastid = lasttweet.get('id',0L)
 lastdate = lasttweet.get('date', datetime.datetime.fromtimestamp(0))
 lasttext = lasttweet.get('text')
-lastkafkaid = lasttweet.get('kafkaid',0L)
+lastkafkaid = long(lasttweet.get('kafkaid',0L))
 
 msg = ""
 msg += "livetweet: \t%s\t%s\t%s\n" % (livedate, liveid, livetext)
@@ -50,7 +50,7 @@ if lastid > 0:
 tweetsfile = open('metamorphosis_tweets.txt')
 for line in tweetsfile:
     parts = line.strip().split('\t')
-    kafkaid = parts[0]
+    kafkaid = long(parts[0])
     dt = datetime.datetime.strptime(parts[1], '%Y-%m-%d %H:%M:%S')
     if kafkaid > lastkafkaid and len(parts) > 2:
         text = parts[2]
